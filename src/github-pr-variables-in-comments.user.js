@@ -33,6 +33,8 @@
 (function() {
     'use strict';
 
+    const VALID_PAGES_RE = /^\/[^\/]+\/[^\/]+\/pull\/[0-9]+/;
+
     var replaces = {
         // Transforms to: @authorname
         "##GITHUB_PR_REPLACE_AUTHOR##": function() {
@@ -88,7 +90,10 @@
     }
 
     function listen() {
-        console.log("loaded");
+        if (VALID_PAGES_RE.exec(location.pathname) === null) {
+            return;
+        }
+
         var comment_fields = document.querySelectorAll(".comment-form-textarea");
         for (var i = 0; i < comment_fields.length; i++) {
             comment_fields[i].addEventListener("keyup", replace.bind(comment_fields[i]));
