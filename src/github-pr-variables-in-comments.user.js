@@ -2,7 +2,7 @@
 // @name         GitHub Pull Request: variables in comments
 // @description  Allow replacing variables in comments/saved replies
 // @author       Pietro Albini
-// @version      1.0
+// @version      1.0.1
 // @license      MIT License
 // @namespace    https://userscripts.pietroalbini.org
 // @icon         https://userscripts.pietroalbini.org/icons/github.png
