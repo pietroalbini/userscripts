@@ -2,7 +2,7 @@
 // @name         GitHub Pull Request: variables in comments
 // @description  Allow replacing variables in comments/saved replies
 // @author       Pietro Albini
-// @version      1.0.1
+// @version      1.0.2
 // @license      MIT License
 // @namespace    https://userscripts.pietroalbini.org
 // @icon         https://userscripts.pietroalbini.org/icons/github.png
@@ -44,7 +44,7 @@
         // Transforms to: @assignee1 @assignee2 @assignee3
         "##GITHUB_PR_REPLACE_ASSIGNEES##": function() {
             var result = "";
-            var assignees = document.querySelectorAll("a.assignee span");
+            var assignees = document.querySelectorAll("div.sidebar-assignee:not(.position-relative) a.assignee span");
             for (var i = 0; i < assignees.length; i++) {
                 result += "@"+assignees[i].innerHTML+" ";
             }
