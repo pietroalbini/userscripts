@@ -1,0 +1,21 @@
+[build]
+base = "web"
+command = "make"
+publish = "web/build"
+
+# Permanent redirect from the netlify domain to the canonical domain
+[[redirects]]
+from = "https://org-pietroalbini-userscripts.netlify.com/*"
+to = "https://userscripts.pietroalbini.org/:splat"
+status = 301
+force = true
+
+# Security headers
+[[headers]]
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-Xss-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "no-referrer"
+Content-Security-Policy = "default-src 'none'; style-src 'self' assets.pietroalbini.org; font-src assets.pietroalbini.org; img-src 'self'"
