@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width" name="viewport">
+        <title>Pietro Albini's userscripts</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://assets.pietroalbini.org/fonts/bitter/include.min.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Pietro Albini's userscripts</h1>
+            {% for script in scripts %}
+            <a href="scripts/{{ script.file }}" class="script">
+                <img src="{{ script.metadata.icon }}" alt="Script logo">
+                <div class="script-content">
+                    <div class="script-title">
+                        <h2>{{ script.metadata.name }}</h2>
+                        <span>Version {{ script.metadata.version }}</span>
+                    </div>
+                    <p>{{ script.metadata.description }}</p>
+                </div>
+            </a>
+            {% endfor %}
+            <a class="footer-link" href="LICENSE.txt">Scripts released under the MIT license</a>
+        </div>
+    </body>
+</html>

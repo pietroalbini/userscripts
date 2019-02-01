@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Bitter';
+    color: #333;
+    background: #f9f9f9;
+}
+
+div.wrapper {
+    max-width: 50rem;
+    margin: auto;
+    padding: 0.1px;
+}
+
+h1 {
+    font-weight: 400;
+    text-align: center;
+    margin: 2rem;
+}
+
+a.script {
+    margin: 1rem 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    transition: 0.2s box-shadow ease-out;
+    background: #fff;
+
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+}
+
+a.script:hover {
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+a.script img {
+    flex: 0;
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1rem;
+}
+
+div.script-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+div.script-title {
+    display: flex;
+}
+
+div.script-title h2 {
+    flex: 1;
+    margin: 0;
+    font-size: 1rem;
+}
+
+div.script-title span {
+    flex: 0;
+    white-space: nowrap;
+    color: #888;
+}
+
+div.script-content p {
+    margin: 0.3rem 0 0 0;
+    color: #555;
+}
+
+a.footer-link {
+    margin: 2rem;
+    padding: 0.1px;
+    display: block;
+    text-align: center;
+    color: #666;
+    transition: 0.2s color ease-out;
+}
+
+a.footer-link:hover {
+    color: #000;
+}
+
+@media all and (max-width: 50rem) {
+    div.script-title {
+        flex-direction: column;
+    }
+
+    div.script-title span {
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
+    }
+}
