@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Azure Pipelines: show logs instead of downloading ZIPs
-// @description  Replace downloadable zips' URLs with browser-viewable logs on Azure Pipelines
+// @name         Azure Pipelines: plaintext logs
+// @description  Show plaintext logs instead of downloadable ZIPs on Azure Pipelines
 // @author       Pietro Albini
 // @version      1.0.0
 // @license      MIT License
