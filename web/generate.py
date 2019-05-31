@@ -25,6 +25,7 @@ def generate():
                 "file": file,
                 "metadata": parse_metadata(path),
             })
+    scripts = sorted(scripts, key=lambda s: s["file"])
 
     tmpl = jinja2.Template(open(TEMPLATE).read())
     return tmpl.render(**{
