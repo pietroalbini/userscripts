@@ -2,7 +2,7 @@
 // @name         YouTube channels: disable featured video autoplay
 // @description  Disable autoplay of the featured video in the channel page
 // @author       Pietro Albini
-// @version      1.0
+// @version      1.0.1
 // @license      MIT License
 // @namespace    https://userscripts.pietroalbini.org
 // @icon         https://userscripts.pietroalbini.org/icons/youtube.png
@@ -10,7 +10,7 @@
 // @grant        none
 // ==/UserScript==
 
-// Copyright (c) 2017 Pietro Albini <pietro@pietroalbini.org>
+// Copyright (c) 2017-2019 Pietro Albini <pietro@pietroalbini.org>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to
@@ -31,35 +31,37 @@
 // IN THE SOFTWARE.
 
 
-(function() {
+(() => {
     "use strict";
 
     const VALID_PAGES_RE = /^\/(user|channel)\/[a-zA-Z0-9_\-]+(\/featured)?$/;
 
-    var pause_video = function() {
+    const pause_video = () => {
         // Don't do anything on pages other than the channel preview
         if (VALID_PAGES_RE.exec(location.pathname) === null) {
             return;
         }
 
-        var interval = setInterval(function() {
-            var video = document.querySelector(
-                "ytd-channel-video-player-renderer video"
+        let paused = false;
+        let interval = setInterval(() => {
+            let video = document.querySelector(
+                ".ytd-channel-video-player-renderer video"
             );
 
             if (video !== null) {
-                video.pause();
+                // Pause the video automatically the first time it starts playing
+                video.addEventListener("play", () => {
+                    if (paused === false) {
+                        paused = true;
+                        video.pause();
+                    }
+                });
                 clearInterval(interval);
             }
         }, 100);
     };
 
-    // Initially pause the video
-    pause_video();
-
-    // Pause videos even when the YouTube page is changed
-    document.addEventListener("yt-navigate-finish", function() {
-        pause_video();
-    });
-
+    // Pause videos once a YouTube page finishes loading
+    // This also works for pages loaded through JS
+    document.addEventListener("yt-navigate-finish", pause_video);
 })();
